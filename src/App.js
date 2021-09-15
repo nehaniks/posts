@@ -1,9 +1,10 @@
 import "tailwindcss/tailwind.css";
+import Posts from "./components/posts";
 
 function App() {
   return (
     <div>
-      <div className="text-7xl">Posts</div>
+      <Posts />
     </div>
   );
 }
