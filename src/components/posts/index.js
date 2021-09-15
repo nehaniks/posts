@@ -17,8 +17,6 @@ export default function Posts() {
 
   return (
     <div className="mx-auto w-3/4">
-      <h1>Posts List</h1>
-
       {showPostDetails ? (
         <Details postId={postId} />
       ) : (
