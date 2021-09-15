@@ -9,18 +9,21 @@ export default function Posts() {
 
   const fetchUrl = "https://jsonplaceholder.typicode.com";
 
-  const getData = () => fetch(`${fetchUrl}/posts`).then((res) => res.json());
+  const getData = () =>
+    fetch(`${fetchUrl}/posts`)
+      .then((res) => res.json())
+      .catch((error) => console.log(error.message));
 
   useEffect(() => {
     getData().then((data) => setPosts(data));
   }, []);
 
   return (
-    <div className="mx-auto w-3/4">
+    <div className="z-10 mx-auto -my-10 w-3/4">
       {showPostDetails ? (
         <Details postId={postId} />
       ) : (
-        <div className="p-4 md:mx-auto lg:mx-4 grid grid-rows-1 md:w-3/4 lg:w-auto lg:grid-cols-1 md:gap-8">
+        <div className="p-4 mx-auto grid grid-rows-1 gap-4">
           {posts?.map((post) => (
             <div key={post.id}>
               <Card

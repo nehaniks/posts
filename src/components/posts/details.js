@@ -12,7 +12,9 @@ export default function Details(props) {
     fetch(`${fetchUrl}/posts/${props.postId}`).then((res) => res.json());
 
   const getComments = () =>
-    fetch(`${fetchUrl}/comments`).then((res) => res.json());
+    fetch(`${fetchUrl}/comments`)
+      .then((res) => res.json())
+      .catch((error) => console.log(error.message));
 
   useEffect(() => {
     getDetails().then((data) => {
