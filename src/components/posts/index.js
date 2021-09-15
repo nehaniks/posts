@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Card from "./card";
 import Details from "./details";
 
+// Fetch and display posts list from api
 export default function Posts() {
   const [posts, setPosts] = useState(null);
   const [postId, setPostId] = useState(null);
@@ -9,6 +10,7 @@ export default function Posts() {
 
   const fetchUrl = "https://jsonplaceholder.typicode.com";
 
+  // Get posts data from api
   const getData = () =>
     fetch(`${fetchUrl}/posts`)
       .then((res) => res.json())
@@ -19,11 +21,12 @@ export default function Posts() {
   }, []);
 
   return (
-    <div className="z-10 mx-auto -my-10 w-3/4">
+    <div className="z-10 mx-auto w-3/4">
       {showPostDetails ? (
         <Details postId={postId} />
       ) : (
-        <div className="p-4 mx-auto grid grid-rows-1 gap-4">
+        <div className="p-4 -my-10 mx-auto grid grid-rows-1 gap-4">
+          {/* Traverse through posts and display title */}
           {posts?.map((post) => (
             <div key={post.id}>
               <Card
